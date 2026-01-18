@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
@@ -143,7 +144,15 @@ export function GamificationSection() {
 
               {/* Badges */}
               <div className="space-y-3">
-                <h4 className="font-medium">Your Badges</h4>
+                <div className="flex items-center justify-between">
+                  <h4 className="font-medium">Your Badges</h4>
+                  <Link to="/rewards">
+                    <Button variant="outline" size="sm" className="gap-2">
+                      <Gift className="h-4 w-4" />
+                      Redeem Points
+                    </Button>
+                  </Link>
+                </div>
                 <div className="flex flex-wrap gap-3">
                   {AVAILABLE_BADGES.map((badge) => {
                     const earned = user.badges.find(b => b.id === badge.id);
